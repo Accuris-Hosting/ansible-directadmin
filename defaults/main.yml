@@ -9,6 +9,7 @@ directadmin_setup_path: /root
 # directadmin_ip_address: # Optional, will be obtained from server
 directadmin_ethernet_device: eth0
 directadmin_custombuild_options_conf: # like http://yourdomain.com/options.conf
+directadmin_custombuild_phpextensions_conf: # like http://yourdomain.com/php_extensions.conf
 directadmin_custombuild_version: 2.0
 directadmin_path: /usr/local/directadmin/
 directadmin_config_path: "{{ directadmin_path }}conf/directadmin.conf"
@@ -74,6 +75,7 @@ directadmin_debian7_packages:
 - libsasl2-dev
 - libncurses5-dev
 - patch
+- libjemalloc-dev
 
 directadmin_debian8_packages:
 - gcc
@@ -92,6 +94,7 @@ directadmin_debian8_packages:
 - zlib1g
 - zlib1g-dev
 - libcap-dev
+- cron
 - bzip2
 - automake
 - autoconf
@@ -104,53 +107,104 @@ directadmin_debian8_packages:
 - libncurses5-dev
 - libsystemd-dev
 - bind9
+- dnsutils
 - quota
 - libsystemd-daemon0
 - patch
 - libjemalloc-dev
+- logrotate
+- rsyslog
+- libc6-dev
+- systemd
+- systemd-sysv
 
 directadmin_debian9_packages:
-- autoconf
-- automake
-- bind9
-- bison
-- bsd-mailx
-- bzip2
-- cmake
-- cron
-- dnsutils
-- flex
-- g++
 - gcc
-- libaio-dev
-- libaio1
-- libc6-dev
-- libcap-dev
-- libcrypt-openssl-rsa-perl
-- libdb-dev
-- libexpat1-dev
-- libjemalloc-dev
-- libncurses5-dev
-- libnuma-dev
-- libnuma1
-- libperl-dev
-- libsasl2-dev
-- libssl-dev
-- libsystemd-dev
-- libtool
-- logrotate
+- g++
 - make
+- flex
+- bison
 - openssl
-- patch
+- libssl-dev
 - perl
 - perl-base
 - perl-modules
-- pkg-config
-- python
-- quota
-- rsyslog
+- libperl-dev
+- libperl4-corelibs-perl
+- libaio1
+- libaio-dev
 - zlib1g
 - zlib1g-dev
+- libcap-dev
+- cron
+- bzip2
+- zip
+- automake
+- autoconf
+- libtool
+- cmake
+- pkg-config
+- python
+- libdb-dev
+- libsasl2-dev
+- libncurses5-dev
+- libsystemd-dev
+- bind9
+- dnsutils
+- quota
+- patch
+- libjemalloc-dev
+- logrotate
+- rsyslog
+- libc6-dev
+- libexpat1-dev
+- libcrypt-openssl-rsa-perl
+- libnuma-dev
+- libnuma1
+
+directadmin_debian10_packages:
+- gcc
+- g++
+- make
+- flex
+- bison
+- openssl
+- libssl-dev
+- perl
+- perl-base
+- perl-modules
+- libperl-dev
+- libperl4-corelibs-perl
+- libwww-perl
+- libaio1
+- libaio-dev
+- zlib1g
+- zlib1g-dev
+- libcap-dev
+- cron
+- bzip2
+- zip
+- automake
+- autoconf
+- libtool
+- cmake
+- pkg-config
+- python
+- libdb-dev
+- libsasl2-dev
+- libncurses5
+- libsystemd-dev
+- bind9
+- dnsutils
+- quota
+- patch
+- logrotate
+- rsyslog
+- libc6-dev
+- libexpat1-dev
+- libcrypt-openssl-rsa-perl
+- libnuma-dev
+- libnuma1
 
 directadmin_rhel_generic_packages:
 - gcc
