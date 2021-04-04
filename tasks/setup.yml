@@ -38,6 +38,20 @@
 
   when: directadmin_custombuild_options_conf is defined and directadmin_custombuild_options_conf is not none
 
+- block:
+  - name: ensure directadmin path if remote options file is used
+    file:
+      path: "{{ directadmin_custombuild_path }}"
+      recurse: yes
+      state: directory
+  
+  - name: try remote php_extensions file
+    get_url:
+      url: "{{ directadmin_custombuild_phpextensions_conf }}"
+      dest: "{{ directadmin_custombuild_phpextensions_conf }}/php_extensions.conf"
+
+  when: directadmin_custombuild_phpextensions_conf is defined and directadmin_custombuild_phpextensions_conf is not none
+
 # https://youtu.be/b00j4WblrzA?t=238
 
 - debug:
