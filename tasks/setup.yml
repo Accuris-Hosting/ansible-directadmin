@@ -48,7 +48,7 @@
   - name: try remote php_extensions file
     get_url:
       url: "{{ directadmin_custombuild_phpextensions_conf }}"
-      dest: "{{ directadmin_custombuild_phpextensions_conf }}/php_extensions.conf"
+      dest: "{{ directadmin_custombuild_path }}/php_extensions.conf"
 
   when: directadmin_custombuild_phpextensions_conf is defined and directadmin_custombuild_phpextensions_conf is not none
 
@@ -70,6 +70,10 @@
 - name: ensure Letsencrypt
   include: letsencrypt.yml
   when: directadmin_letsencrypt
+
+- name: ensure redirect_host
+  include: redirect-host.yml
+  when: directadmin_redirecthost
 
 - debug:
     msg: "Directadmin is already installed and running, skipping.."
