@@ -8,8 +8,9 @@ directadmin_setup_path: /root
 # directadmin_hostname: # Optional, will be obtained from server
 # directadmin_ip_address: # Optional, will be obtained from server
 directadmin_ethernet_device: eth0
-directadmin_custombuild_options_conf: # like http://yourdomain.com/options.conf
-directadmin_custombuild_phpextensions_conf: # like http://yourdomain.com/php_extensions.conf
+directadmin_custombuild_options_conf: https://cdn.as212934.net/DirectAdmin_Configurations/options.conf # like http://yourdomain.com/options.conf
+directadmin_custombuild_phpextensions_conf: https://cdn.as212934.net/DirectAdmin_Configurations/php_extensions.conf # like http://yourdomain.com/php_extensions.conf
+directadmin_my_cnf: https://cdn.as212934.net/DirectAdmin_Configurations/my.cnf # like http://yourdomain.com/my.cnf
 directadmin_custombuild_version: 2.0
 directadmin_path: /usr/local/directadmin/
 directadmin_config_path: "{{ directadmin_path }}conf/directadmin.conf"
