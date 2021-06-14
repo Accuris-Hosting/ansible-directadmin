@@ -18,6 +18,7 @@ directadmin_custombuild_path: "{{ directadmin_path }}custombuild"
 directadmin_cache_timeout: 3600
 directadmin_letsencrypt: True
 directadmin_redirecthost: True
+directadmin_hardenmysql: True
 
 # Packages - http://help.directadmin.com/item.php?id=354
 directadmin_debian6_packages:

@@ -75,6 +75,10 @@
   include: redirect-host.yml
   when: directadmin_redirecthost
 
+- name: ensure hardened mysql
+  include: harden-mysql
+  when: directadmin_hardenmysql
+
 - debug:
     msg: "Directadmin is already installed and running, skipping.."
   when: not directadmin_install
