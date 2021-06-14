@@ -3,3 +3,8 @@
   service:
     name: directadmin
     state: restarted
+
+- name: restart mysqld
+  service:
+    name: mysqld
+    state: restarted

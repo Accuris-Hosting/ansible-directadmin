@@ -1,0 +1,17 @@
+---
+- name: stat my.cnf
+  stat: path=/etc/my.cnf
+  register: mycnf_stat
+
+- name: Move my.cnf to my.cnf.old
+  command: mv /etc/my.cnf /etc/my.cnf.old
+  when: mycnf_stat.stat.exists
+
+- name: try remote my.cnf file
+  get_url:
+    url: "{{ directadmin_my_cnf }}"
+    dest: "/etc/my.cnf"
+  notify:
+  - restart mysqld
+
+  
