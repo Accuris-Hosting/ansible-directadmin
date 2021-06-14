@@ -18,6 +18,7 @@ galaxy_info:
     - squeeze
     - wheezy
     - stretch
+    - buster
   galaxy_tags:
   - system
   - web
