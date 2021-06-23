@@ -1,41 +1,33 @@
 ---
 - name: install dependencies for RHEL, Fedora & CentOS
   yum:
-    name: "{{ item }}"
+    name: "{{ directadmin_rhel_generic_packages }}"
     update_cache: yes
     state: present
-  with_items:
-  - "{{ directadmin_rhel_generic_packages }}"
 
 - name: install everywhere but on CentOS7
   yum:
-    name: "{{ item }}"
+    name: "{{ directadmin_rhel_packages }}"
     update_cache: yes
     state: present
-  with_items:
-  - "{{ directadmin_rhel_packages }}"
   when:
   - ansible_distribution not 'CentOS'
   - ansible_distribution_version is version(7, 'ne')
 
 - name: install CentOS 7 specific requirements
   yum:
-    name: "{{ item }}"
+    name: "{{ directadmin_centos7_packages }}"
     update_cache: yes
     state: present
-  with_items:
-  - "{{ directadmin_centos7_packages }}"
   when:
   - ansible_distribution is 'CentOS'
   - ansible_distribution_version is version(7, '=')
 
 - name: install CentOS 8 specific requirements
   yum:
-    name: "{{ item }}"
+    name: "{{ directadmin_centos8_packages }}"
     update_cache: yes
     state: present
-  with_items:
-  - "{{ directadmin_centos8_packages }}"
   when:
   - ansible_distribution is 'CentOS'
   - ansible_distribution_version is version(8, '=')

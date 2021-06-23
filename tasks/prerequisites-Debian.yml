@@ -1,60 +1,50 @@
 ---
 - name: Install dependencies for Debian 6 Squeeze
   apt:
-    name: "{{ item }}"
+    name: "{{ directadmin_debian6_packages }}"
     update_cache: yes
     cache_valid_time: "{{ directadmin_cache_timeout }}"
     state: present
-  with_items:
-  - "{{ directadmin_debian6_packages }}"
   when:
   - ansible_distribution == 'Debian'
   - ansible_distribution_release == 'squeeze'
 
 - name: Install dependencies for Debian 7 Wheezy
   apt:
-    name: "{{ item }}"
+    name: "{{ directadmin_debian7_packages }}"
     update_cache: yes
     cache_valid_time: "{{ directadmin_cache_timeout }}"
     state: present
-  with_items:
-  - "{{ directadmin_debian7_packages }}"
   when:
   - ansible_distribution == 'Debian'
   - ansible_distribution_release == 'wheezy'
 
 - name: Install dependencies for Debian 8 Jessie
   apt:
-    name: "{{ item }}"
+    name: "{{ directadmin_debian8_packages }}"
     update_cache: yes
     cache_valid_time: "{{ directadmin_cache_timeout }}"
     state: present
-  with_items:
-  - "{{ directadmin_debian8_packages }}"
   when:
   - ansible_distribution == 'Debian'
   - ansible_distribution_release == 'jessie'
 
   - name: Install dependencies for Debian 9 Stretch
     apt:
-      name: "{{ item }}"
+      name: "{{ directadmin_debian9_packages }}"
       update_cache: yes
       cache_valid_time: "{{ directadmin_cache_timeout }}"
       state: present
-    with_items:
-    - "{{ directadmin_debian9_packages }}"
     when:
     - ansible_distribution == 'Debian'
     - ansible_distribution_release == 'stretch'
 
   - name: Install dependencies for Debian 10 Buster
     apt:
-      name: "{{ item }}"
+      name: "{{ directadmin_debian10_packages }}"
       update_cache: yes
       cache_valid_time: "{{ directadmin_cache_timeout }}"
       state: present
-    with_items:
-    - "{{ directadmin_debian10_packages }}"
     when:
     - ansible_distribution == 'Debian'
     - ansible_distribution_release == 'buster'
