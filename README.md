@@ -22,8 +22,8 @@ Its recommended that you use either the `group_vars` / `host_vars` to set the re
 
     directadmin_client_id:
     directadmin_license_id:
-    directadmin_hostname: # Optional, will be obtained from server
-    directadmin_ip_address: # Optional, will be obtained from server
+    directadmin_hostname:
+    directadmin_ip_address:
 
 If you wish to use a custom custombuild configuration, please configure:
 
@@ -45,10 +45,10 @@ FreeBSD support may be added later.
 Example Playbook
 ----------------
 
-    - hosts: servers
+    - hosts: localhost
       become: yes
       roles:
-         - { role: hyperized.directadmin }
+         - ansible-directadmin
 
 License
 -------
@@ -57,5 +57,6 @@ MIT
 
 Author Information
 ------------------
+Peter Potvin <peter.potvin@accurishosting.ca>
 
-Gerben Geijteman <gerben@hyperized.net>
+Original Author: Gerben Geijteman <gerben@hyperized.net>
