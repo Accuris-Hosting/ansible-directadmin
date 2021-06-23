@@ -1,41 +1,39 @@
 ---
+- name: enable SSL with LetsEncrypt
+  replace:
+    path: "{{ directadmin_config_path }}"
+    regexp: '^letsencrypt=0'
+    replace: "letsencrypt=1"
+  notify:
+  - restart directadmin
+
+- name: Add the /.well-known alias (Step 1/2)
+  command: /usr/local/directadmin/custombuild/build update
+
+- name: Add the /.well-known alias (Step 2/2)
+  command: /usr/local/directadmin/custombuild/build rewrite_confs
+
+- name: enable SSL with LetsEncrypt for DirectAdmin (Step 1/3)
+  replace:
+    path: "{{ directadmin_config_path }}"
+    regexp: '^SSL\=0'
+    replace: "SSL=1"
+
+- name: enable SSL with LetsEncrypt for DirectAdmin (Step 2/3)
+  replace:
+    path: "{{ directadmin_config_path }}"
+    regexp: '^force_hostname='
+    replace: "force_hostname={{ directadmin_hostname }}"
+
+- name: enable SSL with LetsEncrypt for DirectAdmin (Step 3/3)
+  replace:
+    path: "{{ directadmin_config_path }}"
+    regexp: '^ssl_redirect_host='
+    replace: "ssl_redirect_host={{ directadmin_hostname }}"
+
 - name: execute LetsEncrypt setup script
-  command: letsencrypt.sh request_single {{ directadmin_hostname }} 4096
-  args:
-    chdir: /usr/local/directadmin/scripts/
+  command: /usr/local/directadmin/scripts/letsencrypt.sh request_single {{ directadmin_hostname }} 4096
   register: directadmin_letsencrypt_output
 
 - debug:
     var: directadmin_letsencrypt_output.stdout_lines
-
-- name: enable SSL with LetsEncrypt for DirectAdmin (Step 1/5)
-  replace:
-    path: directadmin_config_path
-    regexp: '^SSL\=0'
-    replace: "SSL=1"
-  
-- name: enable SSL with LetsEncrypt for DirectAdmin (Step 2/5)
-  replace:
-    path: directadmin_config_path
-    regexp: '^carootcert='
-    replace: "carootcert=/usr/local/directadmin/conf/carootcert.pem"
-
-- name: enable SSL with LetsEncrypt for DirectAdmin (Step 3/5)
-  replace:
-    path: directadmin_config_path
-    regexp: '^force_hostname='
-    replace: "force_hostname={{ directadmin_hostname }}"
-
-- name: enable SSL with LetsEncrypt for DirectAdmin (Step 4/5)
-  replace:
-    path: directadmin_config_path
-    regexp: '^ssl_redirect_host='
-    replace: "ssl_redirect_host={{ directadmin_hostname }}"
-
-- name: enable SSL with LetsEncrypt for DirectAdmin (Step 5/5)
-  replace:
-    path: directadmin_config_path
-    regexp: '^letsencrypt='
-    replace: "letsencrypt=1"
-  notify:
-  - restart directadmin

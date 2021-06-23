@@ -76,7 +76,7 @@
   when: directadmin_redirecthost
 
 - name: ensure hardened mysql
-  include: harden-mysql
+  include: harden-mysql.yml
   when: directadmin_hardenmysql
 
 - debug:

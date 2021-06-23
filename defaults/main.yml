@@ -3,14 +3,14 @@
 directadmin_install: True
 directadmin_setup_url: http://www.directadmin.com/setup.sh
 directadmin_setup_path: /root
-# directadmin_client_id:
-# directadmin_license_id:
-# directadmin_hostname: # Optional, will be obtained from server
-# directadmin_ip_address: # Optional, will be obtained from server
+directadmin_client_id:
+directadmin_license_id:
+directadmin_hostname: 
+directadmin_ip_address: 
 directadmin_ethernet_device: eth0
-directadmin_custombuild_options_conf: https://cdn.as212934.net/DirectAdmin_Configurations/options.conf # like http://yourdomain.com/options.conf
-directadmin_custombuild_phpextensions_conf: https://cdn.as212934.net/DirectAdmin_Configurations/php_extensions.conf # like http://yourdomain.com/php_extensions.conf
-directadmin_my_cnf: https://cdn.as212934.net/DirectAdmin_Configurations/my.cnf # like http://yourdomain.com/my.cnf
+directadmin_custombuild_options_conf: https://cdn.as212934.net/DirectAdmin_Configurations/options.conf
+directadmin_custombuild_phpextensions_conf: https://cdn.as212934.net/DirectAdmin_Configurations/php_extensions.conf
+directadmin_my_cnf: https://cdn.as212934.net/DirectAdmin_Configurations/my.cnf
 directadmin_custombuild_version: 2.0
 directadmin_path: /usr/local/directadmin/
 directadmin_config_path: "{{ directadmin_path }}conf/directadmin.conf"
@@ -22,6 +22,7 @@ directadmin_hardenmysql: True
 
 # Packages - http://help.directadmin.com/item.php?id=354
 directadmin_debian6_packages:
+- sudo
 - gcc
 - g++
 - make
@@ -51,6 +52,7 @@ directadmin_debian6_packages:
 - patch
 
 directadmin_debian7_packages:
+- sudo
 - gcc
 - g++
 - make
@@ -81,6 +83,7 @@ directadmin_debian7_packages:
 - libjemalloc-dev
 
 directadmin_debian8_packages:
+- sudo
 - gcc
 - g++
 - make
@@ -122,6 +125,7 @@ directadmin_debian8_packages:
 - systemd-sysv
 
 directadmin_debian9_packages:
+- sudo
 - gcc
 - g++
 - make
@@ -166,6 +170,7 @@ directadmin_debian9_packages:
 - libnuma1
 
 directadmin_debian10_packages:
+- sudo
 - gcc
 - g++
 - make
@@ -210,6 +215,7 @@ directadmin_debian10_packages:
 - libnuma1
 
 directadmin_rhel_generic_packages:
+- sudo
 - gcc
 - gcc-c++
 - flex
@@ -244,9 +250,11 @@ directadmin_rhel_generic_packages:
 - lsof
 
 directadmin_rhel_packages:
+- sudo
 - db4-devel
 
 directadmin_centos7_packages:
+- sudo
 - psmisc
 - net-tools
 - systemd-devel
@@ -255,6 +263,7 @@ directadmin_centos7_packages:
 - xfsprogs
 
 directadmin_centos8_packages:
+- sudo
 - wget
 - glibc-headers
 - kernel-devel

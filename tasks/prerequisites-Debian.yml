@@ -29,22 +29,22 @@
   - ansible_distribution == 'Debian'
   - ansible_distribution_release == 'jessie'
 
-  - name: Install dependencies for Debian 9 Stretch
-    apt:
-      name: "{{ directadmin_debian9_packages }}"
-      update_cache: yes
-      cache_valid_time: "{{ directadmin_cache_timeout }}"
-      state: present
-    when:
-    - ansible_distribution == 'Debian'
-    - ansible_distribution_release == 'stretch'
+- name: Install dependencies for Debian 9 Stretch
+  apt:
+    name: "{{ directadmin_debian9_packages }}"
+    update_cache: yes
+    cache_valid_time: "{{ directadmin_cache_timeout }}"
+    state: present
+  when:
+  - ansible_distribution == 'Debian'
+  - ansible_distribution_release == 'stretch'
 
-  - name: Install dependencies for Debian 10 Buster
-    apt:
-      name: "{{ directadmin_debian10_packages }}"
-      update_cache: yes
-      cache_valid_time: "{{ directadmin_cache_timeout }}"
-      state: present
-    when:
-    - ansible_distribution == 'Debian'
-    - ansible_distribution_release == 'buster'
+- name: Install dependencies for Debian 10 Buster
+  apt:
+    name: "{{ directadmin_debian10_packages }}"
+    update_cache: yes
+    cache_valid_time: "{{ directadmin_cache_timeout }}"
+    state: present
+  when:
+  - ansible_distribution == 'Debian'
+  - ansible_distribution_release == 'buster'
