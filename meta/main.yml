@@ -1,8 +1,8 @@
 ---
 galaxy_info:
-  author: Gerben Geijteman
+  author: Peter Potvin
   description: Deploy DirectAdmin with Ansible
-  company: Hyperized Hosting
+  company: Accuris Hosting
   license: MIT
   min_ansible_version: 2.5
   platforms:
