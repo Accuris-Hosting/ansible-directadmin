@@ -1,10 +1,8 @@
 ---
 - name: Reconfigure redirect_host variable for DirectAdmin's webserver
-  lineinfile:
+  replace:
     path: "{{ directadmin_custombuild_path }}/options.conf"
-  regexp: item.regexp
-  line: item.line
-  with_items:
-  - { regexp: '^redirect_host\=server\.hostname\.com' , line: "redirect_host={{ directadmin_hostname }}" }
+    regexp: '^redirect_host\=server\.hostname\.com'
+    replace: "redirect_host={{ directadmin_hostname }}"
   notify:
   - restart directadmin

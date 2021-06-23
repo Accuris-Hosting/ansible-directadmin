@@ -8,16 +8,34 @@
 - debug:
     var: directadmin_letsencrypt_output.stdout_lines
 
-- name: enable SSL with LetsEncrypt for DirectAdmin
-  lineinfile:
+- name: enable SSL with LetsEncrypt for DirectAdmin (Step 1/5)
+  replace:
     path: directadmin_config_path
-  regexp: item.regexp
-  line: item.line
-  with_items:
-  - { regexp: '^SSL\=0' , line: 'SSL=1' }
-  - { regexp: '^carootcert=' , line: 'carootcert=/usr/local/directadmin/conf/carootcert.pem' }
-  - { regexp: '^force_hostname=' , line: "force_hostname={{ directadmin_hostname }}" }
-  - { regexp: '^ssl_redirect_host=' , line: "ssl_redirect_host={{ directadmin_hostname }}" }
-  - { regexp: '^letsencrypt=' , line: "letsencrypt=1" }
+    regexp: '^SSL\=0'
+    replace: "SSL=1"
+  
+- name: enable SSL with LetsEncrypt for DirectAdmin (Step 2/5)
+  replace:
+    path: directadmin_config_path
+    regexp: '^carootcert='
+    replace: "carootcert=/usr/local/directadmin/conf/carootcert.pem"
+
+- name: enable SSL with LetsEncrypt for DirectAdmin (Step 3/5)
+  replace:
+    path: directadmin_config_path
+    regexp: '^force_hostname='
+    replace: "force_hostname={{ directadmin_hostname }}"
+
+- name: enable SSL with LetsEncrypt for DirectAdmin (Step 4/5)
+  replace:
+    path: directadmin_config_path
+    regexp: '^ssl_redirect_host='
+    replace: "ssl_redirect_host={{ directadmin_hostname }}"
+
+- name: enable SSL with LetsEncrypt for DirectAdmin (Step 5/5)
+  replace:
+    path: directadmin_config_path
+    regexp: '^letsencrypt='
+    replace: "letsencrypt=1"
   notify:
   - restart directadmin
